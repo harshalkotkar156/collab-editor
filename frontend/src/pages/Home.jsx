@@ -13,23 +13,35 @@ function timeAgo(date) {
 }
 
 export default function Home() {
+  
   const [docs, setDocs] = useState([])
   const [loading, setLoading] = useState(true)
   const [creating, setCreating] = useState(false)
   const navigate = useNavigate()
+  
 
-  useEffect(() => {
-    axios.get(`${BASE_URL}/api/documents`)
-      .then(res => setDocs(res.data))
-      .catch(console.error)
-      .finally(() => setLoading(false))
-  }, [])
+ useEffect(() => {
+  const fetchDocuments = async () => {
+    try {
+      console.log("hello")
+      const response = await axios.get(`${BASE_URL}/api/documents`);
+      
+      console.log(response);
+      setDocs(response.data)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  fetchDocuments()
+}, [])
 
   async function createDocument() {
     setCreating(true)
     try {
       const res = await axios.post(`${BASE_URL}/api/documents`)
-
       navigate(`${CLIENT_URL}/doc/${res.data._id}`)
     } catch (err) {
       console.error(err)

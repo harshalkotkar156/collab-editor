@@ -14,14 +14,15 @@ const server = http.createServer(app)
 // ── Socket.io setup ───────────────────────────────────────────────────────────
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: process.env.CLIENT_URL,
     methods: ['GET', 'POST', 'PATCH', 'DELETE'],
     credentials: true,
   },
 })
 
+
 // ── Middleware ────────────────────────────────────────────────────────────────
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173', credentials: true }))
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }))
 app.use(express.json())
 
 // ── REST Routes ───────────────────────────────────────────────────────────────
