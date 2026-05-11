@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0f1117;
+  color: #e8eaf0;
+  font-family: 'DM Sans', sans-serif;
+  margin: 0;
+}
+
+/* ── Editor textarea styles ─────────────────────────────── */
+.editor-textarea {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #e8eaf0;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  width: 100%;
+  min-height: 600px;
+  caret-color: #6ee7b7;
+}
+
+.editor-textarea::selection {
+  background: rgba(110, 231, 183, 0.2);
+}
+
+/* ── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2a2d3a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3d4a; }
+
+/* ── Presence avatars pulse ─────────────────────────────── */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(110, 231, 183, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(110, 231, 183, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(110, 231, 183, 0); }
+}
+
+.avatar-pulse { animation: pulse-ring 2s infinite; }
+
+/* ── Fade in ────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { animation: fadeIn 0.25s ease forwards; }
