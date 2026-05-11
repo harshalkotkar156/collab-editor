@@ -33,8 +33,9 @@ app.get('/health', (req, res) => res.json({ status: 'ok', timestamp: new Date().
 setupSocketHandlers(io)
 
 // ── MongoDB + Start Server ────────────────────────────────────────────────────
-const PORT = process.env.PORT || 5000
-const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/collab-editor'
+const PORT = process.env.PORT || 4000;
+
+const MONGO_URI = process.env.MONGODB_URI;
 
 mongoose
   .connect(MONGO_URI)
